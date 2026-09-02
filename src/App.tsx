@@ -22,8 +22,8 @@ export default function App() {
   const [splashPhase, setSplashPhase] = useState<'visible' | 'leaving' | 'hidden'>('visible');
 
   useEffect(() => {
-    const leaveTimer = window.setTimeout(() => setSplashPhase('leaving'), 1300);
-    const hideTimer = window.setTimeout(() => setSplashPhase('hidden'), 2000);
+    const leaveTimer = window.setTimeout(() => setSplashPhase('leaving'), 1500);
+    const hideTimer = window.setTimeout(() => setSplashPhase('hidden'), 2300);
     return () => {
       window.clearTimeout(leaveTimer);
       window.clearTimeout(hideTimer);
@@ -98,6 +98,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-blue-50">
       {screen === 'home' && (
+        <div key="home" className="screen-enter">
         <HomeScreen
           country={country}
           onCountryChange={setCountryCode}
@@ -105,9 +106,11 @@ export default function App() {
           onDemo={handleDemo}
           onCall={handleCall}
         />
+        </div>
       )}
 
       {screen === 'input' && (
+        <div key="input" className="screen-enter">
         <InputScreen
           initialDescription={description}
           isDemo={isDemo}
@@ -118,9 +121,11 @@ export default function App() {
           error={error}
           onRetry={handleRetry}
         />
+        </div>
       )}
 
       {screen === 'guidance' && guidance && (
+        <div key="guidance" className="screen-enter">
         <GuidanceScreen
           guidance={guidance}
           description={description}
@@ -130,6 +135,7 @@ export default function App() {
           onCall={handleCall}
           onStartOver={handleStartOver}
         />
+        </div>
       )}
 
       {callOpen && <CallModal country={country} onClose={() => setCallOpen(false)} />}
