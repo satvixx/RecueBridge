@@ -74,7 +74,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
+  background: #022c98;
+  overflow: hidden;
   animation: fadeIn 0.25s ease-out;
 }
 .splash-image {
@@ -84,6 +85,18 @@
   height: auto;
   object-fit: contain;
   object-position: center;
+  position: relative;
+  z-index: 2;
+}
+.splash-decor {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.06);
+  z-index: 1;
+  pointer-events: none;
+}
+.splash-decor svg {
+  width: 100%;
+  height: 100%;
 }
 .splash-screen-leaving {
   animation: splashZoomFade 0.7s ease-in forwards;
